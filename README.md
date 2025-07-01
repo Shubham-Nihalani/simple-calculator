@@ -13,6 +13,7 @@ This is my second Bash scripting project, created as part of my journey to explo
 - Multiplication
 - Division (with zero-check and decimal precision upto 3 digits)
 - Power (exponentiation)
+- Square (calculates the square of a number)
 - Menu-driven interface
 - Repeats until you choose to exit
 
@@ -20,7 +21,7 @@ This is my second Bash scripting project, created as part of my journey to explo
 
 1. The user runs the script in the terminal.
 2. A menu is displayed with numbered options for operations.
-3. The user selects an operation by pressing a single key (1–6).
+3. The user selects an operation by pressing a single key (1–7).
 4. The script asks for two numbers.
 5. It performs the selected operation:
    - For division, it checks if the second number is zero.
@@ -48,7 +49,7 @@ This is my second Bash scripting project, created as part of my journey to explo
 
 ## Notes
 
-- Only **one character input** is accepted for the operation choice (1–6).
+- Only **one character input** is accepted for the operation choice (1–7).
 - The calculator waits for **user confirmation after each result** before continuing.
 - **Division supports decimal output** using `bc`.
 - Inputs are not validated for non-numeric entries (future improvement idea).
