@@ -27,17 +27,25 @@ do
 	read -s -n 1 # silently ask for enter
 	echo
 	
-	# only ask for first input if selected square
+	# if else to check for inputs
 	
+	# if input is 7 exit
 	if [[ "$your_choice" == 7 ]]; then
 	    echo "Goodbye!"
 	    echo "Thanks for using this script."
 	    exit 0
+	# if input is 6 , aak for one number only
 	elif [[ "$your_choice" == 6 ]]; then
 	    read -p "Enter a number: " num1
+	# if input is 5, ask for base and exponent
 	elif [[ "$your_choice" == 5 ]]; then
 		read -p "Enter the base: " num1
 		read -p "Enter the exponent: " num2
+	# if input is 4 ask for dividend and divisor
+	elif [[ "$your_choice" == 5 ]]; then
+		read -p "Enter the dividend: " num1
+		read -p "Enter the divisor: " num2
+	# else ask for normal input
 	else
 		read -p "Enter the first number: " num1
 		read -p "Enter the second number: " num2		
