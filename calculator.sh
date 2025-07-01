@@ -1,63 +1,70 @@
 #!/bin/bash
 
 clear
+echo "Welcome to our basic calculator!"
+sleep 1
+echo "First, tell us what operation you want to perform, then select the 2 numbers."
+sleep 2
+	
 
 while true
 do
 
-	echo "Welcome to our basic calculator!"
-	sleep 1
-	echo "First, tell us what operation you want to perform, then select the 2 numbers."
-	sleep 3
-	
-		# the menu set
+	# the menu set
 	echo "Select an operation:"
 	sleep 1
 	echo "1 - Add"
 	echo "2 - Subtract"
 	echo "3 - Multiply"
 	echo "4 - Divide"
-	echo "5 - Power the second number is treated as a power to the first number)"
-	echo "6 - Exit :("
+	echo "5 - Power (Only integers are allowed)"
+	echo "6 - Square"
+	echo "7 - Exit :("
 	
-		# read user prompt
+	# read user prompt
 	
-	read -n 1 -p "Enter your choice (1-6): " your_choice
+	read -n 1 -p "Enter your choice (1-7): " your_choice
 	read -s -n 1 # silently ask for enter
 	echo
 	
-		# exit if option is 6
+	# only ask for first input if selected square
 	
-	if [[ "$your_choice" == 6 ]]; then
+	if [[ "$your_choice" == 7 ]]; then
 	    echo "Goodbye!"
 	    echo "Thanks for using this script."
 	    exit 0
+	elif [[ "$your_choice" == 6 ]]; then
+	    read -p "Enter a number: " num1
+	elif [[ "$your_choice" == 5 ]]; then
+		read -p "Enter the base: " num1
+		read -p "Enter the exponent: " num2
+	else
+		read -p "Enter the first number: " num1
+		read -p "Enter the second number: " num2		
 	fi
 	
 	
-	read -p "Enter the first number: " num1
-	read -p "Enter the second number: " num2
 	
 	case $your_choice in
 	    1)
 	        sleep 1
 	        echo "Adding..."
 	        sleep 1
-	        echo "$num1 + $num2 = $((num1 + num2))"
+	        echo "$num1 + $num2 = $(echo "scale=3; $num1 + $num2" | bc)"
 	        read -p "Press Enter to continue..."
 	        ;;
 	    2)
 	        sleep 1
 	        echo "Subtracting..."
 	        sleep 1
-	        echo "$num1 - $num2 = $((num1 - num2))"
+	        echo "$num1 - $num2 = $(echo "scale=3; $num1 - $num2" | bc)"
 	        read -p "Press Enter to continue..."
 	        ;;
 	    3)
 	        sleep 1
 	        echo "Multiplying..."
 	        sleep 1
-	        echo "$num1 * $num2 = $((num1 * num2))"
+	        echo "$num1 * $num2 = $(echo "scale=3; $num1 * $num2" | bc)"
 	        read -p "Press Enter to continue..."
 	        ;;
 	    4)
@@ -76,9 +83,16 @@ do
 	            ;;
 	    5)
 	        sleep 1
-	        echo "Power..."
+	        echo "Exponentiating..."
 	        sleep 1
 	        echo "$num1 ^ $num2 = $((num1 ** num2))"
+	        read -p "Press Enter to continue..."
+	        ;;
+	    6)
+	        sleep 1
+	        echo "Squaring..."
+	        sleep 1
+	        echo "$num1 ^ 2 = $(echo "scale=3; $num1 ^ 2" | bc)"
 	        read -p "Press Enter to continue..."
 	        ;;
 	    *)
